@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ClientSiteRoute from "./ClientSiteRoute";
-import PostInfo from "./PostInfo";
+// import PostInfo from "./PostInfo";
 import {
   EyeIcon,
   BookOpenIcon,
@@ -49,7 +49,7 @@ function PostItem({ post }: Props) {
         </div>
       </div>
 
-      <PostInfo post={post} />
+      {/* <PostInfo post={post} /> */}
     </li>
   );
 }
