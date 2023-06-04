@@ -11,7 +11,7 @@ type Props = {
   post: Post;
 };
 
-function Post({ post }: Props) {
+function PostItem({ post }: Props) {
   return (
     <li className="flex flex-col justify-between gap-2 md:gap-4 animate-[opacity_1s_ease-in-out]">
       <div className="group cursor-pointer relative grow">
@@ -54,4 +54,4 @@ function Post({ post }: Props) {
   );
 }
 
-export default Post;
+export default PostItem;

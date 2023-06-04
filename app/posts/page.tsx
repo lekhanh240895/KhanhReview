@@ -1,18 +1,15 @@
 import React from "react";
-import Post from "../components/Post";
+import Post from "../models/Post";
+import PostItem from "../components/PostItem";
+import { mongooseConnect } from "../lib/mongoose";
+
+export const revalidate = 3600; // revalidate every hour
 
 async function getPosts() {
-  const res = await fetch("http://localhost:3000/api/posts", {
-    next: {
-      revalidate: 10,
-    },
-  });
+  await mongooseConnect();
 
-  if (!res.ok) {
-    throw new Error("Error fetching data");
-  }
-
-  return res.json();
+  const posts = await Post.find();
+  return posts;
 }
 
 async function Page() {
@@ -22,7 +19,7 @@ async function Page() {
     <main>
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 grid-flow-dense">
         {posts.length > 0 &&
-          posts.map((post) => <Post post={post} key={post._id} />)}
+          posts.map((post) => <PostItem post={post} key={post._id} />)}
       </ul>
     </main>
   );
