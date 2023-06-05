@@ -1,6 +1,6 @@
 import Image from "next/image";
 import ClientSiteRoute from "./ClientSiteRoute";
-// import PostInfo from "./PostInfo";
+import PostInfo from "./PostInfo";
 import {
   EyeIcon,
   BookOpenIcon,
@@ -11,9 +11,12 @@ type Props = {
   post: Post;
 };
 
-function PostItem({ post }: Props) {
+function Post({ post }: Props) {
   return (
-    <li className="flex flex-col justify-between gap-2 md:gap-4 animate-[opacity_1s_ease-in-out]">
+    <li
+      // className="min-h-[320px] md:[&:nth-child(6n+1)]:col-span-2 md:[&:nth-child(6n+1)]:row-span-4 lg:[&:nth-child(6n+2)]:row-span-5 md:[&:nth-child(6n+2)]:row-span-6 md:[&:nth-child(6n+3)]:row-span-4 lg:[&:nth-child(6n+3)]:row-span-5 md:[&:nth-child(6n+4)]:row-span-6 lg:[&:nth-child(6n+4)]:row-span-5 md:[&:nth-child(6n+5)]:row-span-4 lg:[&:nth-child(6n+5)]:row-span-5 md:[&:nth-child(6n+6)]:col-span-2 md:[&:nth-child(6n+6)]:row-span-4 space-y-6 flex flex-col justify-between"
+      className="flex flex-col justify-between gap-2 md:gap-4 animate-[opacity_1s_ease-in-out]"
+    >
       <div className="group cursor-pointer relative grow">
         <ClientSiteRoute route={`${post.slug}`}>
           <div className="relative w-full min-h-[400px] h-full drop-shadow-xl group-hover:scale-105 transition duration-200 ease-out">
@@ -35,7 +38,7 @@ function PostItem({ post }: Props) {
         <div className="absolute top-2 right-2 bg-primary text-white flex items-center gap-3 px-4 py-1 rounded-full z-10">
           <div className="flex gap-1 items-center">
             <ChatBubbleLeftIcon className="w-4 h-4" />
-            <span>{post.comments?.length}</span>
+            <span>{post.comments.length}</span>
           </div>
           <div className="flex gap-1 items-center">
             <EyeIcon className="w-4 h-4" />
@@ -49,9 +52,9 @@ function PostItem({ post }: Props) {
         </div>
       </div>
 
-      {/* <PostInfo post={post} /> */}
+      <PostInfo post={post} />
     </li>
   );
 }
 
-export default PostItem;
+export default Post;

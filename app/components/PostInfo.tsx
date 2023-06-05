@@ -23,7 +23,9 @@ function PostInfo({ post }: Props) {
 
         <div className="w-1 h-1 rounded-full bg-primary mx-2"></div>
 
-        <div className="">{format(new Date(), "MMM d, yyyy HH:mm")}</div>
+        <div className="">
+          {format(new Date(post.createdAt), "MMM d, yyyy HH:mm")}
+        </div>
       </div>
 
       <div className="text-gray-500 line-clamp-2">{post.description}</div>

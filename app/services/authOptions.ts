@@ -69,6 +69,10 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token, user }) {
+      // if (!adminEmails.includes(session.user.email)) {
+      //   throw new Error("Only admin can access this page!");
+      // }
+
       if (token) {
         session.user._id = token.id;
       }
